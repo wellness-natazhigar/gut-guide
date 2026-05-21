@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЖКТ - Перезагрузка | Wellness Natazhigar</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #e8f5e9, #c8e6d9); padding: 20px; }
+        .container { max-width: 700px; margin: 0 auto; }
+        .site-card { background: white; border-radius: 25px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .logo { color: #2e7d64; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; }
+        .badge { background: #fef3c7; color: #b45309; display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: bold; margin-bottom: 10px; }
+        h1 { color: #1a5d4a; font-size: 1.8rem; margin-bottom: 10px; }
+        .subhead { font-size: 1rem; font-weight: bold; color: #2e7d64; border-left: 4px solid #2e7d64; padding-left: 12px; margin: 10px 0; }
+        .desc { color: #2c3e2f; line-height: 1.5; margin-bottom: 20px; }
+        .checklist { background: #f9fef9; border: 1px solid #c8e6d9; border-radius: 16px; padding: 15px; margin: 15px 0; }
+        .checklist-title { font-weight: bold; margin-bottom: 5px; color: #1a5d4a; }
+        .check-item { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+        .check-item input { width: 18px; height: 18px; accent-color: #2e7d64; cursor: pointer; }
+        .check-item label { font-weight: 500; color: #1a2e25; cursor: pointer; }
+        .check-item.completed label { text-decoration: line-through; color: #94a3b8; }
+        .progress-bar { height: 6px; background: #ddd; border-radius: 10px; margin: 10px 0 5px; }
+        .progress-fill { width: 0%; height: 100%; background: #2e7d64; border-radius: 10px; transition: width 0.2s; }
+        .progress-text { text-align: center; font-size: 0.7rem; color: #2e7d64; }
+        .btn { background: #2e7d64; color: white; padding: 12px; border: none; border-radius: 30px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
+        .contact-buttons { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .contact-btn { flex: 1; text-align: center; text-decoration: none; padding: 10px; border-radius: 30px; font-weight: bold; color: white; }
+        .telegram { background: #0088cc; }
+        .whatsapp { background: #25D366; }
+        .max { background: #0057ff; }
+        hr { margin: 15px 0; border: none; height: 1px; background: #c8e6d9; }
+        .footer { font-size: 0.7rem; text-align: center; color: #5a7c6e; }
+        .result-block { background: #f0f7f3; border-radius: 16px; padding: 15px; margin-top: 15px; }
+        .result-block h3 { color: #1a5d4a; margin-bottom: 10px; }
+        .result-block p { margin: 8px 0; line-height: 1.5; }
+        .result-block ul { margin-left: 20px; margin-top: 10px; }
+        .result-block li { margin: 8px 0; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="site-card">
+        <div class="logo">wellness_natazhigar.com</div>
+        <div class="badge">⭐ БЕСПЛАТНЫЙ ГАЙД</div>
+        <h1>ЖКТ — Перезагрузка</h1>
+        <div class="subhead">Первые шаги к спокойному животу.</div>
+        <p class="desc">Если вздутие, тяжесть и нестабильный стул стали нормой — здесь есть чёткая отправная точка и следующий шаг к системному восстановлению.</p>
+
+        <!-- Чек-лист -->
+        <div class="checklist">
+            <div class="checklist-title">📋 Ваш маршрут к результату</div>
+            <p style="font-size:0.7rem; color:#5a7c6e; margin-bottom:8px;">✅ Отмечайте пункты по мере прочтения, чтобы перейти к следующему шагу</p>
+            <div class="check-item"><input type="checkbox" id="step1"><label for="step1">🎯 Узнаете, с чего начать перезагрузку ЖКТ</label></div>
+            <div class="check-item"><input type="checkbox" id="step2"><label for="step2">📋 Получите готовый план восстановления (от простого к глубокому)</label></div>
+            <div class="check-item"><input type="checkbox" id="step3"><label for="step3">🔥 Поймёте, как системный подход решает именно вашу задачу (вздутие, энергия, кожа, стул — любой ваш запрос)</label></div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+            <div class="progress-text" id="percentText">0% выполнено</div>
+        </div>
+
+        <!-- Кнопка открыть гайд -->
+        <button class="btn" id="guideBtn">📖 Читать гайд ↓</button>
+
+        <!-- Кнопки связи -->
+        <div class="contact-buttons">
+            <a href="https://t.me/wellness_nataliazhigar" target="_blank" class="contact-btn telegram">📱 Telegram</a>
+            <a href="https://wa.me/qr/SQCR2GMEA5U2M1" target="_blank" class="contact-btn whatsapp">💬 WhatsApp</a>
+            <a href="https://max.ru/u/f9LHodD0cOKpN9-fT0VJ-w9RVxEEgq2z8_zSDBy6ERp7nwWTlfhdbCxAVB4" target="_blank" class="contact-btn max">💙 Макс</a>
+        </div>
+
+        <!-- Блок "Что вы получите" -->
+        <div class="result-block">
+            <h3>🎯 Что вы получите после прохождения программы «ЖКТ — Перезагрузка»:</h3>
+            <ul>
+                <li>✅ Уходит то, что вас беспокоит (вздутие, тяжесть, нестабильный стул, усталость, проблемы с кожей, отёки)</li>
+                <li>✅ Появляется энергия и лёгкость</li>
+                <li>✅ Вы понимаете, какие продукты вам подходят, а какие нет</li>
+                <li>✅ <strong>Вы сами будете знать, что делать</strong> в любой ситуации</li>
+                <li>✅ Системный план восстановления, который работает без хаотичных назначений</li>
+                <li>✅ Результат, который закрепляется и не возвращается</li>
+            </ul>
+        </div>
+
+        <hr />
+        <div class="footer">Системный подход к восстановлению ЖКТ. Без хаотичных назначений.</div>
+    </div>
+</div>
+
+<script>
+    // === ЧЕК-ЛИСТ С СОХРАНЕНИЕМ ===
+    const checkboxes = document.querySelectorAll('#step1, #step2, #step3');
+    const progressFill = document.getElementById('progressFill');
+    const percentText = document.getElementById('percentText');
+    
+    function updateProgress() {
+        const total = checkboxes.length;
+        let checked = 0;
+        checkboxes.forEach(cb => { if (cb.checked) checked++; });
+        const percent = total === 0 ? 0 : Math.round((checked / total) * 100);
+        progressFill.style.width = percent + '%';
+        percentText.innerText = percent + '% выполнено';
+        
+        checkboxes.forEach(cb => {
+            const parent = cb.closest('.check-item');
+            if (parent) {
+                if (cb.checked) parent.classList.add('completed');
+                else parent.classList.remove('completed');
+            }
+        });
+        
+        const states = Array.from(checkboxes).map(cb => cb.checked);
+        localStorage.setItem('zhigarChecklist', JSON.stringify(states));
+    }
+    
+    function loadProgress() {
+        const saved = localStorage.getItem('zhigarChecklist');
+        if (saved) {
+            const states = JSON.parse(saved);
+            checkboxes.forEach((cb, index) => {
+                if (states[index] !== undefined) cb.checked = states[index];
+            });
+        }
+        updateProgress();
+    }
+    
+    checkboxes.forEach(cb => cb.addEventListener('change', updateProgress));
+    loadProgress();
+    
+    // === МОДАЛЬНОЕ ОКНО С ГАЙДОМ ===
+    document.getElementById('guideBtn').addEventListener('click', function() {
+        const modal = document.createElement('div');
+        modal.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); backdrop-filter:blur(4px); display:flex; align-items:center; justify-content:center; z-index:1000;';
+        modal.innerHTML = `
+            <div style="background:white; max-width:550px; width:90%; border-radius:1.5rem; padding:1.5rem; max-height:85vh; overflow-y:auto;">
+                <h3 style="color:#1a5d4a; margin-bottom:0.5rem; text-align:center;">📖 Выберите формат гайда</h3>
+                <p style="text-align:center; color:#5a7c6e; margin-bottom:1.5rem;">Короткий маршрут или полный разбор</p>
+                
+                <div style="display:flex; gap:1rem; margin-bottom:1.5rem;">
+                    <button id="classicGuideBtn" style="flex:1; background:#2e7d64; color:white; border:none; padding:0.8rem; border-radius:1.5rem; font-weight:bold; cursor:pointer;">📘 Короткая версия</button>
+                    <button id="extendedGuideBtn" style="flex:1; background:#f59e0b; color:white; border:none; padding:0.8rem; border-radius:1.5rem; font-weight:bold; cursor:pointer;">🔬 Расширенная версия</button>
+                </div>
+                
+                <div id="guideContent" style="background:#f9fef9; border-radius:1rem; padding:1rem; border:1px solid #c8e6d9;">
+                    <p style="text-align:center; color:#5a7c6e;">Нажмите на вариант выше</p>
+                </div>
+                
+                <button id="closeModal" style="margin-top:1.5rem; background:#e2e8f0; color:#1a5d4a; border:none; padding:0.6rem; border-radius:2rem; cursor:pointer; width:100%;">Закрыть</button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        
+        // Короткая версия (3 шага)
+        function showClassicGuide() {
+            document.getElementById('guideContent').innerHTML = `
+                <h4 style="color:#1a5d4a; margin-bottom:0.8rem;">📘 Короткая версия — 3 шага к перезагрузке ЖКТ</h4>
+                <div style="margin-bottom:1rem;">
+                    <p><strong>💧 Шаг 1: Водный баланс</strong><br>
+                    <span style="font-size:0.85rem;">Зачем: Без воды не работают ферменты, не выводятся токсины, густеет желчь</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Лёгкость после еды, уходит тяжесть</span></p>
+                    
+                    <p><strong>🧹 Шаг 2: Восстановление</strong><br>
+                    <span style="font-size:0.85rem;">Зачем: Убираем то, что мешает, и восстанавливаем слизистую</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Уходит вздутие, нормализуется стул</span></p>
+                    
+                    <p><strong>📊 Шаг 3: Восполнение дефицитов</strong><br>
+                    <span style="font-size:0.85rem;">Зачем: Даём организму то, чего не хватает</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Возвращается энергия, улучшается кожа и волосы</span></p>
+                </div>
+                <p style="font-size:0.8rem; background:#e8f5e9; padding:0.8rem; border-radius:0.8rem;">✨ После этих шагов вы почувствуете лёгкость и улучшение пищеварения. Для закрепления результата переходите к расширенной версии.</p>
+            `;
+        }
+        
+        // Расширенная версия (7 шагов)
+        function showExtendedGuide() {
+            document.getElementById('guideContent').innerHTML = `
+                <h4 style="color:#1a5d4a; margin-bottom:0.8rem;">🔬 Расширенная версия — полная перезагрузка ЖКТ (7 шагов)</h4>
+                <div style="margin-bottom:1rem;">
+                    <p><strong>📓 Шаг 1: Пищевой дневник</strong><br>
+                    <span style="font-size:0.85rem;">Зачем: Увидеть скрытые триггеры</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Точное понимание своих реакций</span></p>
+                    
+                    <p><strong>🚫 Шаг 2: Элиминационная диета</strong><br>
+                    <span style="font-size:0.85rem;">Зачем: Убрать главные раздражители</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Живот перестаёт болеть и вздуваться</span></p>
+                    
+                    <p><strong>💧 Шаг 3: Водный баланс</strong><br>
+                    <span style="font-size:0.85rem;">Зачем: Запустить метаболизм</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Энергия с утра, уходят отёки</span></p>
+                    
+                    <p><strong>🦠 Шаг 4: Токсины, вирусы, грибы, паразиты</strong><br>
+                    <span style="font-size:0.85rem;">Зачем: Убрать нагрузку на иммунитет</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Кожа очищается, уходят частые простуды</span></p>
+                    
+                    <p><strong>🌀 Шаг 5: Глубокое восстановление кишечника</strong><br>
+                    <span style="font-size:0.85rem;">Зачем: Восстановить слизистую и микрофлору</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Уходит вздутие, улучшается усвоение</span></p>
+                    
+                    <p><strong>🌿 Шаг 6: Лимфоочистка</strong><br>
+                    <span style="font-size:0.85rem;">Зачем: Разогнать лимфу</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Проходят утренние отёки, улучшается цвет лица</span></p>
+                    
+                    <p><strong>📊 Шаг 7: Восполнение дефицитов</strong><br>
+                    <span style="font-size:0.85rem;">Зачем: Закрепить результат</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Клиент чувствует себя бодрым</span></p>
+                </div>
+                <p style="font-size:0.8rem; background:#e8f5e9; padding:0.8rem; border-radius:0.8rem;">✨ Эти 7 шагов — ваша дорожная карта к спокойному животу и высокой энергии. Рекомендуем проходить под поддержкой специалиста.</p>
+            `;
+        }
+        
+        document.getElementById('classicGuideBtn').addEventListener('click', showClassicGuide);
+        document.getElementById('extendedGuideBtn').addEventListener('click', showExtendedGuide);
+        
+        document.getElementById('closeModal').addEventListener('click', () => modal.remove());
+        modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+    });
+</script>
+</body>
+</html>
