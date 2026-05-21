@@ -21,7 +21,7 @@
         .check-item label { font-weight: 500; color: #1a2e25; cursor: pointer; }
         .check-item.completed label { text-decoration: line-through; color: #94a3b8; }
         .progress-bar { height: 6px; background: #ddd; border-radius: 10px; margin: 10px 0 5px; }
-        .progress-fill { width: 0%; height: 100%; background: #2e7d64; border-radius: 10px; transition: width 0.2s; }
+        .progress-fill { width: 0%; height: 100%; background: #2e7d64; transition: width 0.2s; }
         .progress-text { text-align: center; font-size: 0.7rem; color: #2e7d64; }
         .btn { background: #2e7d64; color: white; padding: 12px; border: none; border-radius: 30px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
         .invite-text { text-align: center; margin: 20px 0 15px 0; font-size: 1rem; font-weight: bold; color: #1a5d4a; }
@@ -36,6 +36,9 @@
         .result-block h3 { color: #1a5d4a; margin-bottom: 10px; }
         .result-block ul { margin-left: 20px; margin-top: 10px; }
         .result-block li { margin: 8px 0; }
+        .reviews { background: #fff8e7; border-left: 4px solid #f59e0b; padding: 12px; margin-top: 15px; border-radius: 12px; }
+        .reviews p { margin: 8px 0; font-style: italic; }
+        .review-author { font-weight: bold; font-style: normal; margin-top: 5px; font-size: 0.85rem; color: #b45309; }
     </style>
 </head>
 <body>
@@ -154,7 +157,7 @@
         `;
         document.body.appendChild(modal);
         
-        // Короткая версия (3 шага)
+        // КОРОТКАЯ ВЕРСИЯ (3 шага) с отзывами о короткой программе
         function showClassicGuide() {
             document.getElementById('guideContent').innerHTML = `
                 <h4 style="color:#1a5d4a; margin-bottom:0.8rem;">📘 Короткая версия — 3 шага к перезагрузке ЖКТ</h4>
@@ -171,11 +174,18 @@
                     <span style="font-size:0.85rem;">Зачем: Даём организму то, чего не хватает</span><br>
                     <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Возвращается энергия, улучшается кожа и волосы</span></p>
                 </div>
-                <p style="font-size:0.8rem; background:#e8f5e9; padding:0.8rem; border-radius:0.8rem;">✨ После этих шагов вы почувствуете лёгкость и улучшение пищеварения. Для закрепления результата переходите к расширенной версии.</p>
+                <div class="reviews">
+                    <p>✨ <strong>Что говорят клиенты после короткой программы:</strong></p>
+                    <p>«После короткой программы "ЖКТ — Перезагрузка" ушла тяжесть после еды, перестало вздувать. Появилась лёгкость и понимание, с чего начать. Огромное спасибо!»</p>
+                    <p class="review-author">— Ольга, 38 лет</p>
+                    <p>«Всего 3 шага — а результат уже через неделю! Ушла сонливость после обеда, живот перестал болеть. Буду идти дальше на расширенную программу.»</p>
+                    <p class="review-author">— Марина, 45 лет</p>
+                </div>
+                <p style="font-size:0.8rem; background:#e8f5e9; padding:0.8rem; border-radius:0.8rem; margin-top:15px;">✨ После этих шагов вы почувствуете лёгкость и улучшение пищеварения. Для закрепления результата переходите к расширенной версии.</p>
             `;
         }
         
-        // Расширенная версия (7 шагов)
+        // РАСШИРЕННАЯ ВЕРСИЯ (7 шагов) с отзывами о полной программе
         function showExtendedGuide() {
             document.getElementById('guideContent').innerHTML = `
                 <h4 style="color:#1a5d4a; margin-bottom:0.8rem;">🔬 Расширенная версия — полная перезагрузка ЖКТ (7 шагов)</h4>
@@ -208,7 +218,14 @@
                     <span style="font-size:0.85rem;">Зачем: Закрепить результат</span><br>
                     <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Клиент чувствует себя бодрым</span></p>
                 </div>
-                <p style="font-size:0.8rem; background:#e8f5e9; padding:0.8rem; border-radius:0.8rem;">✨ Эти 7 шагов — ваша дорожная карта к спокойному животу и высокой энергии. Рекомендуем проходить под поддержкой специалиста.</p>
+                <div class="reviews">
+                    <p>✨ <strong>Что говорят клиенты после полной программы:</strong></p>
+                    <p>«Полная перезагрузка ЖКТ изменила мою жизнь. Ушло вздутие, которое мучило 7 лет, нормализовался стул, вернулась энергия. Я наконец понимаю свой организм!»</p>
+                    <p class="review-author">— Татьяна, 50 лет</p>
+                    <p>«7 шагов — это дорожная карта к здоровью. Я не только убрала проблемы с ЖКТ, но и похудела, очистилась кожа, ушли отёки. Теперь я сама знаю, что делать. Спасибо за систему!»</p>
+                    <p class="review-author">— Елена, 41 год</p>
+                </div>
+                <p style="font-size:0.8rem; background:#e8f5e9; padding:0.8rem; border-radius:0.8rem; margin-top:15px;">✨ Эти 7 шагов — ваша дорожная карта к спокойному животу и высокой энергии. Рекомендуем проходить под поддержкой специалиста.</p>
             `;
         }
         
