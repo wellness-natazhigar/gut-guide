@@ -14,6 +14,8 @@
         h1 { color: #1a5d4a; font-size: 1.8rem; margin-bottom: 10px; }
         .subhead { font-size: 1rem; font-weight: bold; color: #2e7d64; border-left: 4px solid #2e7d64; padding-left: 12px; margin: 10px 0; }
         .desc { color: #2c3e2f; line-height: 1.5; margin-bottom: 20px; }
+        .story-block { background: #fef9e6; border-radius: 16px; padding: 12px; margin: 15px 0; border-left: 4px solid #f59e0b; }
+        .story-block p { font-size: 0.9rem; margin: 5px 0; }
         .checklist { background: #f9fef9; border: 1px solid #c8e6d9; border-radius: 16px; padding: 15px; margin: 15px 0; }
         .checklist-title { font-weight: bold; margin-bottom: 5px; color: #1a5d4a; }
         .check-item { margin-bottom: 10px; padding-left: 5px; }
@@ -43,6 +45,12 @@
         <h1>ЖКТ — Перезагрузка</h1>
         <div class="subhead">Первые шаги к спокойному животу.</div>
         <p class="desc">Если вздутие, тяжесть и нестабильный стул стали нормой — здесь есть чёткая отправная точка и следующий шаг к системному восстановлению.</p>
+
+        <!-- Личная история -->
+        <div class="story-block">
+            <p>🧬 <strong>Почему я создала этот гайд</strong></p>
+            <p>Я сама прошла путь от вздутия и усталости до лёгкости и энергии. И помогла сотням клиентов с такими же симптомами. Всё, что внутри, работает на практике.</p>
+        </div>
 
         <!-- Чек-лист без галочек -->
         <div class="checklist">
@@ -83,7 +91,6 @@
 </div>
 
 <script>
-    // === МОДАЛЬНОЕ ОКНО С ГАЙДОМ ===
     document.getElementById('guideBtn').addEventListener('click', function() {
         const modal = document.createElement('div');
         modal.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); backdrop-filter:blur(4px); display:flex; align-items:center; justify-content:center; z-index:1000;';
@@ -91,37 +98,23 @@
             <div style="background:white; max-width:550px; width:90%; border-radius:1.5rem; padding:1.5rem; max-height:85vh; overflow-y:auto;">
                 <h3 style="color:#1a5d4a; margin-bottom:0.5rem; text-align:center;">📖 Выберите формат гайда</h3>
                 <p style="text-align:center; color:#5a7c6e; margin-bottom:1.5rem;">Короткий маршрут или полный разбор</p>
-                
                 <div style="display:flex; gap:1rem; margin-bottom:1.5rem;">
                     <button id="classicGuideBtn" style="flex:1; background:#2e7d64; color:white; border:none; padding:0.8rem; border-radius:1.5rem; font-weight:bold; cursor:pointer;">📘 Короткая версия</button>
                     <button id="extendedGuideBtn" style="flex:1; background:#f59e0b; color:white; border:none; padding:0.8rem; border-radius:1.5rem; font-weight:bold; cursor:pointer;">🔬 Расширенная версия</button>
                 </div>
-                
-                <div id="guideContent" style="background:#f9fef9; border-radius:1rem; padding:1rem; border:1px solid #c8e6d9;">
-                    <p style="text-align:center; color:#5a7c6e;">Нажмите на вариант выше</p>
-                </div>
-                
+                <div id="guideContent" style="background:#f9fef9; border-radius:1rem; padding:1rem; border:1px solid #c8e6d9;"><p style="text-align:center;">Нажмите на вариант выше</p></div>
                 <button id="closeModal" style="margin-top:1.5rem; background:#e2e8f0; color:#1a5d4a; border:none; padding:0.6rem; border-radius:2rem; cursor:pointer; width:100%;">Закрыть</button>
             </div>
         `;
         document.body.appendChild(modal);
         
-        // КОРОТКАЯ ВЕРСИЯ
         function showClassicGuide() {
             document.getElementById('guideContent').innerHTML = `
                 <h4 style="color:#1a5d4a; margin-bottom:0.8rem;">📘 Короткая версия — 3 шага к перезагрузке ЖКТ</h4>
                 <div style="margin-bottom:1rem;">
-                    <p><strong>1. Водный баланс</strong> 💧<br>
-                    <span style="font-size:0.85rem;">Зачем: Без воды не работают ферменты, не выводятся токсины, густеет желчь</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Лёгкость после еды, уходит тяжесть и вздутие</span></p>
-                    
-                    <p><strong>2. Очищение</strong> 🧹<br>
-                    <span style="font-size:0.85rem;">Зачем: Убираем токсины, шлаки, грибы, паразитов, которые мешают работе кишечника</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Уходит вздутие, нормализуется стул, перестаёт болеть живот</span></p>
-                    
-                    <p><strong>3. Восполнение дефицитов</strong> 📊<br>
-                    <span style="font-size:0.85rem;">Зачем: Даём организму то, чего не хватает (витамины, минералы, ферменты)</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Улучшается пищеварение, уходит тяжесть, возвращается энергия</span></p>
+                    <p><strong>1. Водный баланс</strong> 💧<br><span style="font-size:0.85rem;">Зачем: Без воды не работают ферменты, не выводятся токсины, густеет желчь</span><br><span style="font-size:0.85rem; color:#2e7d64;">✅ Лёгкость после еды, уходит тяжесть и вздутие</span></p>
+                    <p><strong>2. Очищение</strong> 🧹<br><span style="font-size:0.85rem;">Зачем: Убираем токсины, шлаки, грибы, паразитов, которые мешают работе кишечника</span><br><span style="font-size:0.85rem; color:#2e7d64;">✅ Уходит вздутие, нормализуется стул, перестаёт болеть живот</span></p>
+                    <p><strong>3. Восполнение дефицитов</strong> 📊<br><span style="font-size:0.85rem;">Зачем: Даём организму то, чего не хватает (витамины, минералы, ферменты)</span><br><span style="font-size:0.85rem; color:#2e7d64;">✅ Улучшается пищеварение, уходит тяжесть, возвращается энергия</span></p>
                 </div>
                 <div class="reviews">
                     <p>✨ <strong>Что говорят клиенты после короткой программы:</strong></p>
@@ -132,50 +125,24 @@
                 </div>
                 <div style="background:#e8f5e9; padding:15px; border-radius:16px; margin-top:16px;">
                     <p style="font-weight:bold;">✨ Короткая программа включает:</p>
-                    <ul style="margin-left:20px; margin-bottom:12px;">
-                        <li>✅ Готовый набор нутрицевтиков</li>
-                        <li>✅ Самостоятельное прохождение по этому плану из 3 шагов</li>
-                    </ul>
-                    <p style="background:white; padding:10px; border-radius:12px; text-align:center;">
-                        💬 <strong>Узнать стоимость короткой версии</strong> — напишите мне в любой мессенджер
-                    </p>
+                    <ul style="margin-left:20px;"><li>✅ Готовый набор нутрицевтиков</li><li>✅ Самостоятельное прохождение по этому плану из 3 шагов</li></ul>
+                    <p style="background:white; padding:10px; border-radius:12px; text-align:center;">💬 <strong>Узнать стоимость короткой версии</strong> — напишите мне в любой мессенджер</p>
                 </div>
                 <p style="font-size:0.8rem; background:#e8f5e9; padding:0.8rem; border-radius:0.8rem; margin-top:15px;">✨ После этих шагов вы почувствуете лёгкость и улучшение пищеварения. Для закрепления результата переходите к расширенной версии.</p>
             `;
         }
         
-        // РАСШИРЕННАЯ ВЕРСИЯ
         function showExtendedGuide() {
             document.getElementById('guideContent').innerHTML = `
                 <h4 style="color:#1a5d4a; margin-bottom:0.8rem;">🔬 Расширенная версия — полная перезагрузка ЖКТ (7 шагов)</h4>
                 <div style="margin-bottom:1rem;">
-                    <p><strong>1. Пищевой дневник</strong> 📓<br>
-                    <span style="font-size:0.85rem;">Зачем: Увидеть скрытые триггеры, которые раздражают ЖКТ</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Точное понимание, какие продукты вызывают вздутие и дискомфорт</span></p>
-                    
-                    <p><strong>2. Элиминационная диета</strong> 🚫<br>
-                    <span style="font-size:0.85rem;">Зачем: Убрать главные раздражители кишечника (глютен, лактозу, FODMAP)</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Живот перестаёт болеть и вздуваться после еды</span></p>
-                    
-                    <p><strong>3. Водный баланс</strong> 💧<br>
-                    <span style="font-size:0.85rem;">Зачем: Запустить метаболизм и детоксикацию</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Улучшается моторика кишечника, уходят запоры/диарея</span></p>
-                    
-                    <p><strong>4. Токсины, вирусы, грибы, паразиты</strong> 🦠<br>
-                    <span style="font-size:0.85rem;">Зачем: Убрать скрытую нагрузку на ЖКТ и иммунитет</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Кишечник начинает работать стабильно, уходит вздутие</span></p>
-                    
-                    <p><strong>5. Глубокое очищение кишечника</strong> 🌀<br>
-                    <span style="font-size:0.85rem;">Зачем: Восстановить слизистую и микрофлору</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Усвоение питательных веществ, стул становится регулярным</span></p>
-                    
-                    <p><strong>6. Лимфоочистка</strong> 🌿<br>
-                    <span style="font-size:0.85rem;">Зачем: Убрать застой лимфы, который влияет на отёки и воспаление в ЖКТ</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Проходят отёки, улучшается общее состояние живота</span></p>
-                    
-                    <p><strong>7. Восполнение дефицитов</strong> 📊<br>
-                    <span style="font-size:0.85rem;">Зачем: Закрепить результат энергией и здоровьем</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Устойчивая работа кишечника, больше энергии, проблемы ЖКТ уходят надолго</span></p>
+                    <p><strong>1. Пищевой дневник</strong> 📓<br><span style="font-size:0.85rem;">Зачем: Увидеть скрытые триггеры, которые раздражают ЖКТ</span><br><span style="font-size:0.85rem; color:#2e7d64;">✅ Точное понимание, какие продукты вызывают вздутие и дискомфорт</span></p>
+                    <p><strong>2. Элиминационная диета</strong> 🚫<br><span style="font-size:0.85rem;">Зачем: Убрать главные раздражители кишечника (глютен, лактозу, FODMAP)</span><br><span style="font-size:0.85rem; color:#2e7d64;">✅ Живот перестаёт болеть и вздуваться после еды</span></p>
+                    <p><strong>3. Водный баланс</strong> 💧<br><span style="font-size:0.85rem;">Зачем: Запустить метаболизм и детоксикацию</span><br><span style="font-size:0.85rem; color:#2e7d64;">✅ Улучшается моторика кишечника, уходят запоры/диарея</span></p>
+                    <p><strong>4. Токсины, вирусы, грибы, паразиты</strong> 🦠<br><span style="font-size:0.85rem;">Зачем: Убрать скрытую нагрузку на ЖКТ и иммунитет</span><br><span style="font-size:0.85rem; color:#2e7d64;">✅ Кишечник начинает работать стабильно, уходит вздутие</span></p>
+                    <p><strong>5. Глубокое очищение кишечника</strong> 🌀<br><span style="font-size:0.85rem;">Зачем: Восстановить слизистую и микрофлору</span><br><span style="font-size:0.85rem; color:#2e7d64;">✅ Усвоение питательных веществ, стул становится регулярным</span></p>
+                    <p><strong>6. Лимфоочистка</strong> 🌿<br><span style="font-size:0.85rem;">Зачем: Убрать застой лимфы, который влияет на отёки и воспаление в ЖКТ</span><br><span style="font-size:0.85rem; color:#2e7d64;">✅ Проходят отёки, улучшается общее состояние живота</span></p>
+                    <p><strong>7. Восполнение дефицитов</strong> 📊<br><span style="font-size:0.85rem;">Зачем: Закрепить результат энергией и здоровьем</span><br><span style="font-size:0.85rem; color:#2e7d64;">✅ Устойчивая работа кишечника, больше энергии, проблемы ЖКТ уходят надолго</span></p>
                 </div>
                 <div class="reviews">
                     <p>✨ <strong>Что говорят клиенты после полной программы:</strong></p>
@@ -186,14 +153,8 @@
                 </div>
                 <div style="background:#e8f5e9; padding:15px; border-radius:16px; margin-top:16px;">
                     <p style="font-weight:bold;">🔥 Расширенная программа включает:</p>
-                    <ul style="margin-left:20px; margin-bottom:12px;">
-                        <li>✅ Расширенный набор нутрицевтиков (подбирается под вашу задачу)</li>
-                        <li>✅ Анкета для подбора продуктов</li>
-                        <li>✅ Моя персональная поддержка на каждом этапе</li>
-                    </ul>
-                    <p style="background:white; padding:10px; border-radius:12px; text-align:center;">
-                        💬 <strong>Узнать стоимость и доступность</strong> — напишите мне в любой мессенджер
-                    </p>
+                    <ul style="margin-left:20px;"><li>✅ Расширенный набор нутрицевтиков (подбирается под вашу задачу)</li><li>✅ Анкета для подбора продуктов</li><li>✅ Моя персональная поддержка на каждом этапе</li></ul>
+                    <p style="background:white; padding:10px; border-radius:12px; text-align:center;">💬 <strong>Узнать стоимость и доступность</strong> — напишите мне в любой мессенджер</p>
                 </div>
                 <p style="font-size:0.8rem; background:#e8f5e9; padding:0.8rem; border-radius:0.8rem; margin-top:15px;">✨ Эти 7 шагов — ваша дорожная карта к спокойному животу и высокой энергии. Рекомендуем проходить под поддержкой специалиста.</p>
             `;
@@ -201,7 +162,6 @@
         
         document.getElementById('classicGuideBtn').addEventListener('click', showClassicGuide);
         document.getElementById('extendedGuideBtn').addEventListener('click', showExtendedGuide);
-        
         document.getElementById('closeModal').addEventListener('click', () => modal.remove());
         modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
     });
