@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЖКТ - Перезагрузка | Wellness Natazhigar</title>
     <style>
@@ -16,13 +16,7 @@
         .desc { color: #2c3e2f; line-height: 1.5; margin-bottom: 20px; }
         .checklist { background: #f9fef9; border: 1px solid #c8e6d9; border-radius: 16px; padding: 15px; margin: 15px 0; }
         .checklist-title { font-weight: bold; margin-bottom: 5px; color: #1a5d4a; }
-        .check-item { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-        .check-item input { width: 18px; height: 18px; accent-color: #2e7d64; cursor: pointer; }
-        .check-item label { font-weight: 500; color: #1a2e25; cursor: pointer; }
-        .check-item.completed label { text-decoration: line-through; color: #94a3b8; }
-        .progress-bar { height: 6px; background: #ddd; border-radius: 10px; margin: 10px 0 5px; }
-        .progress-fill { width: 0%; height: 100%; background: #2e7d64; transition: width 0.2s; }
-        .progress-text { text-align: center; font-size: 0.7rem; color: #2e7d64; }
+        .check-item { margin-bottom: 10px; padding-left: 5px; }
         .btn { background: #2e7d64; color: white; padding: 12px; border: none; border-radius: 30px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
         .invite-text { text-align: center; margin: 20px 0 15px 0; font-size: 1rem; font-weight: bold; color: #1a5d4a; }
         .contact-buttons { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
@@ -50,21 +44,16 @@
         <div class="subhead">Первые шаги к спокойному животу.</div>
         <p class="desc">Если вздутие, тяжесть и нестабильный стул стали нормой — здесь есть чёткая отправная точка и следующий шаг к системному восстановлению.</p>
 
-        <!-- Чек-лист -->
+        <!-- Чек-лист без галочек -->
         <div class="checklist">
             <div class="checklist-title">📋 Ваш маршрут к результату</div>
-            <p style="font-size:0.7rem; color:#5a7c6e; margin-bottom:8px;">✅ Отмечайте пункты по мере прочтения, чтобы перейти к следующему шагу</p>
-            <div class="check-item"><input type="checkbox" id="step1"><label for="step1">🎯 Узнаете, с чего начать перезагрузку ЖКТ</label></div>
-            <div class="check-item"><input type="checkbox" id="step2"><label for="step2">📋 Получите готовый план восстановления (от простого к глубокому)</label></div>
-            <div class="check-item"><input type="checkbox" id="step3"><label for="step3">🔥 Поймёте, как системный подход решает именно вашу задачу (вздутие, энергия, кожа, стул — любой ваш запрос)</label></div>
-            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-            <div class="progress-text" id="percentText">0% выполнено</div>
+            <div class="check-item">🎯 Узнаете, с чего начать перезагрузку ЖКТ</div>
+            <div class="check-item">📋 Получите готовый план восстановления (от простого к глубокому)</div>
+            <div class="check-item">🔥 Поймёте, как системный подход решает именно вашу задачу (вздутие, энергия, кожа, стул — любой ваш запрос)</div>
         </div>
 
-        <!-- Кнопка открыть гайд -->
         <button class="btn" id="guideBtn">📖 Читать гайд ↓</button>
 
-        <!-- Блок "Что вы получите" -->
         <div class="result-block">
             <h3>🎯 Что вы получите после прохождения программы «ЖКТ — Перезагрузка»:</h3>
             <ul>
@@ -74,15 +63,14 @@
                 <li>✅ <strong>Вы сами будете знать, что делать</strong> в любой ситуации</li>
                 <li>✅ Системный план восстановления, который работает без хаотичных назначений</li>
                 <li>✅ Результат, который закрепляется и не возвращается</li>
+                <li>✅ <strong>И как бонус:</strong> при восстановлении кишечника весь организм приходит в баланс — восстанавливаются все системы, улучшается самочувствие, возвращается ресурс</li>
             </ul>
         </div>
 
-        <!-- Приглашение перед кнопками -->
         <div class="invite-text">
             ✨ Хочешь пройти перезагрузку — напиши мне в любой мессенджер ✨
         </div>
 
-        <!-- Кнопки связи в самом низу -->
         <div class="contact-buttons">
             <a href="https://t.me/wellness_nataliazhigar" target="_blank" class="contact-btn telegram">📱 Telegram</a>
             <a href="https://wa.me/qr/SQCR2GMEA5U2M1" target="_blank" class="contact-btn whatsapp">💬 WhatsApp</a>
@@ -95,45 +83,6 @@
 </div>
 
 <script>
-    // === ЧЕК-ЛИСТ С СОХРАНЕНИЕМ ===
-    const checkboxes = document.querySelectorAll('#step1, #step2, #step3');
-    const progressFill = document.getElementById('progressFill');
-    const percentText = document.getElementById('percentText');
-    
-    function updateProgress() {
-        const total = checkboxes.length;
-        let checked = 0;
-        checkboxes.forEach(cb => { if (cb.checked) checked++; });
-        const percent = total === 0 ? 0 : Math.round((checked / total) * 100);
-        progressFill.style.width = percent + '%';
-        percentText.innerText = percent + '% выполнено';
-        
-        checkboxes.forEach(cb => {
-            const parent = cb.closest('.check-item');
-            if (parent) {
-                if (cb.checked) parent.classList.add('completed');
-                else parent.classList.remove('completed');
-            }
-        });
-        
-        const states = Array.from(checkboxes).map(cb => cb.checked);
-        localStorage.setItem('zhigarChecklist', JSON.stringify(states));
-    }
-    
-    function loadProgress() {
-        const saved = localStorage.getItem('zhigarChecklist');
-        if (saved) {
-            const states = JSON.parse(saved);
-            checkboxes.forEach((cb, index) => {
-                if (states[index] !== undefined) cb.checked = states[index];
-            });
-        }
-        updateProgress();
-    }
-    
-    checkboxes.forEach(cb => cb.addEventListener('change', updateProgress));
-    loadProgress();
-    
     // === МОДАЛЬНОЕ ОКНО С ГАЙДОМ ===
     document.getElementById('guideBtn').addEventListener('click', function() {
         const modal = document.createElement('div');
@@ -157,73 +106,94 @@
         `;
         document.body.appendChild(modal);
         
-        // КОРОТКАЯ ВЕРСИЯ (3 шага) с отзывами о короткой программе
+        // КОРОТКАЯ ВЕРСИЯ
         function showClassicGuide() {
             document.getElementById('guideContent').innerHTML = `
                 <h4 style="color:#1a5d4a; margin-bottom:0.8rem;">📘 Короткая версия — 3 шага к перезагрузке ЖКТ</h4>
                 <div style="margin-bottom:1rem;">
-                    <p><strong>💧 Шаг 1: Водный баланс</strong><br>
+                    <p><strong>1. Водный баланс</strong> 💧<br>
                     <span style="font-size:0.85rem;">Зачем: Без воды не работают ферменты, не выводятся токсины, густеет желчь</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Лёгкость после еды, уходит тяжесть</span></p>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Лёгкость после еды, уходит тяжесть и вздутие</span></p>
                     
-                    <p><strong>🧹 Шаг 2: Восстановление</strong><br>
-                    <span style="font-size:0.85rem;">Зачем: Убираем то, что мешает, и восстанавливаем слизистую</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Уходит вздутие, нормализуется стул</span></p>
+                    <p><strong>2. Очищение</strong> 🧹<br>
+                    <span style="font-size:0.85rem;">Зачем: Убираем токсины, шлаки, грибы, паразитов, которые мешают работе кишечника</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Уходит вздутие, нормализуется стул, перестаёт болеть живот</span></p>
                     
-                    <p><strong>📊 Шаг 3: Восполнение дефицитов</strong><br>
-                    <span style="font-size:0.85rem;">Зачем: Даём организму то, чего не хватает</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Возвращается энергия, улучшается кожа и волосы</span></p>
+                    <p><strong>3. Восполнение дефицитов</strong> 📊<br>
+                    <span style="font-size:0.85rem;">Зачем: Даём организму то, чего не хватает (витамины, минералы, ферменты)</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Улучшается пищеварение, уходит тяжесть, возвращается энергия</span></p>
                 </div>
                 <div class="reviews">
                     <p>✨ <strong>Что говорят клиенты после короткой программы:</strong></p>
-                    <p>«После короткой программы "ЖКТ — Перезагрузка" ушла тяжесть после еды, перестало вздувать. Появилась лёгкость и понимание, с чего начать. Огромное спасибо!»</p>
+                    <p>«После короткой программы ушла тяжесть после еды, перестало вздувать. Появилась лёгкость и понимание, с чего начать.»</p>
                     <p class="review-author">— Ольга, 38 лет</p>
-                    <p>«Всего 3 шага — а результат уже через неделю! Ушла сонливость после обеда, живот перестал болеть. Буду идти дальше на расширенную программу.»</p>
+                    <p>«Всего 3 шага — а результат уже через неделю! Ушла сонливость после обеда, живот перестал болеть. Буду идти дальше.»</p>
                     <p class="review-author">— Марина, 45 лет</p>
+                </div>
+                <div style="background:#e8f5e9; padding:15px; border-radius:16px; margin-top:16px;">
+                    <p style="font-weight:bold;">✨ Короткая программа включает:</p>
+                    <ul style="margin-left:20px; margin-bottom:12px;">
+                        <li>✅ Готовый набор нутрицевтиков</li>
+                        <li>✅ Самостоятельное прохождение по этому плану из 3 шагов</li>
+                    </ul>
+                    <p style="background:white; padding:10px; border-radius:12px; text-align:center;">
+                        💬 <strong>Узнать стоимость короткой версии</strong> — напишите мне в любой мессенджер
+                    </p>
                 </div>
                 <p style="font-size:0.8rem; background:#e8f5e9; padding:0.8rem; border-radius:0.8rem; margin-top:15px;">✨ После этих шагов вы почувствуете лёгкость и улучшение пищеварения. Для закрепления результата переходите к расширенной версии.</p>
             `;
         }
         
-        // РАСШИРЕННАЯ ВЕРСИЯ (7 шагов) с отзывами о полной программе
+        // РАСШИРЕННАЯ ВЕРСИЯ
         function showExtendedGuide() {
             document.getElementById('guideContent').innerHTML = `
                 <h4 style="color:#1a5d4a; margin-bottom:0.8rem;">🔬 Расширенная версия — полная перезагрузка ЖКТ (7 шагов)</h4>
                 <div style="margin-bottom:1rem;">
-                    <p><strong>📓 Шаг 1: Пищевой дневник</strong><br>
-                    <span style="font-size:0.85rem;">Зачем: Увидеть скрытые триггеры</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Точное понимание своих реакций</span></p>
+                    <p><strong>1. Пищевой дневник</strong> 📓<br>
+                    <span style="font-size:0.85rem;">Зачем: Увидеть скрытые триггеры, которые раздражают ЖКТ</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Точное понимание, какие продукты вызывают вздутие и дискомфорт</span></p>
                     
-                    <p><strong>🚫 Шаг 2: Элиминационная диета</strong><br>
-                    <span style="font-size:0.85rem;">Зачем: Убрать главные раздражители</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Живот перестаёт болеть и вздуваться</span></p>
+                    <p><strong>2. Элиминационная диета</strong> 🚫<br>
+                    <span style="font-size:0.85rem;">Зачем: Убрать главные раздражители кишечника (глютен, лактозу, FODMAP)</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Живот перестаёт болеть и вздуваться после еды</span></p>
                     
-                    <p><strong>💧 Шаг 3: Водный баланс</strong><br>
-                    <span style="font-size:0.85rem;">Зачем: Запустить метаболизм</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Энергия с утра, уходят отёки</span></p>
+                    <p><strong>3. Водный баланс</strong> 💧<br>
+                    <span style="font-size:0.85rem;">Зачем: Запустить метаболизм и детоксикацию</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Улучшается моторика кишечника, уходят запоры/диарея</span></p>
                     
-                    <p><strong>🦠 Шаг 4: Токсины, вирусы, грибы, паразиты</strong><br>
-                    <span style="font-size:0.85rem;">Зачем: Убрать нагрузку на иммунитет</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Кожа очищается, уходят частые простуды</span></p>
+                    <p><strong>4. Токсины, вирусы, грибы, паразиты</strong> 🦠<br>
+                    <span style="font-size:0.85rem;">Зачем: Убрать скрытую нагрузку на ЖКТ и иммунитет</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Кишечник начинает работать стабильно, уходит вздутие</span></p>
                     
-                    <p><strong>🌀 Шаг 5: Глубокое восстановление кишечника</strong><br>
+                    <p><strong>5. Глубокое очищение кишечника</strong> 🌀<br>
                     <span style="font-size:0.85rem;">Зачем: Восстановить слизистую и микрофлору</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Уходит вздутие, улучшается усвоение</span></p>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Усвоение питательных веществ, стул становится регулярным</span></p>
                     
-                    <p><strong>🌿 Шаг 6: Лимфоочистка</strong><br>
-                    <span style="font-size:0.85rem;">Зачем: Разогнать лимфу</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Проходят утренние отёки, улучшается цвет лица</span></p>
+                    <p><strong>6. Лимфоочистка</strong> 🌿<br>
+                    <span style="font-size:0.85rem;">Зачем: Убрать застой лимфы, который влияет на отёки и воспаление в ЖКТ</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Проходят отёки, улучшается общее состояние живота</span></p>
                     
-                    <p><strong>📊 Шаг 7: Восполнение дефицитов</strong><br>
-                    <span style="font-size:0.85rem;">Зачем: Закрепить результат</span><br>
-                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Что получите: Клиент чувствует себя бодрым</span></p>
+                    <p><strong>7. Восполнение дефицитов</strong> 📊<br>
+                    <span style="font-size:0.85rem;">Зачем: Закрепить результат энергией и здоровьем</span><br>
+                    <span style="font-size:0.85rem; color:#2e7d64;">✅ Устойчивая работа кишечника, больше энергии, проблемы ЖКТ уходят надолго</span></p>
                 </div>
                 <div class="reviews">
                     <p>✨ <strong>Что говорят клиенты после полной программы:</strong></p>
-                    <p>«Полная перезагрузка ЖКТ изменила мою жизнь. Ушло вздутие, которое мучило 7 лет, нормализовался стул, вернулась энергия. Я наконец понимаю свой организм!»</p>
+                    <p>«Полная перезагрузка ЖКТ изменила мою жизнь. Ушло вздутие, которое мучило 7 лет, нормализовался стул, вернулась энергия.»</p>
                     <p class="review-author">— Татьяна, 50 лет</p>
-                    <p>«7 шагов — это дорожная карта к здоровью. Я не только убрала проблемы с ЖКТ, но и похудела, очистилась кожа, ушли отёки. Теперь я сама знаю, что делать. Спасибо за систему!»</p>
+                    <p>«7 шагов — это дорожная карта. Я не только убрала проблемы с ЖКТ, но и похудела, очистилась кожа, ушли отёки. Теперь я сама знаю, что делать.»</p>
                     <p class="review-author">— Елена, 41 год</p>
+                </div>
+                <div style="background:#e8f5e9; padding:15px; border-radius:16px; margin-top:16px;">
+                    <p style="font-weight:bold;">🔥 Расширенная программа включает:</p>
+                    <ul style="margin-left:20px; margin-bottom:12px;">
+                        <li>✅ Расширенный набор нутрицевтиков (подбирается под вашу задачу)</li>
+                        <li>✅ Анкета для подбора продуктов</li>
+                        <li>✅ Моя персональная поддержка на каждом этапе</li>
+                    </ul>
+                    <p style="background:white; padding:10px; border-radius:12px; text-align:center;">
+                        💬 <strong>Узнать стоимость и доступность</strong> — напишите мне в любой мессенджер
+                    </p>
                 </div>
                 <p style="font-size:0.8rem; background:#e8f5e9; padding:0.8rem; border-radius:0.8rem; margin-top:15px;">✨ Эти 7 шагов — ваша дорожная карта к спокойному животу и высокой энергии. Рекомендуем проходить под поддержкой специалиста.</p>
             `;
